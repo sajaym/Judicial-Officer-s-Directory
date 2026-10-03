@@ -8,7 +8,7 @@
   <link rel="icon" href="img/emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
     // Apply the saved theme before first paint to avoid a flash.
@@ -18,27 +18,27 @@
 <body>
   <a class="skip" href="#results">Skip to results</a>
 
-  <header class="top">
-    <div class="wrap top-in">
-      <a class="brand" href="./" aria-label="e-Directory home">
-        <img src="img/emblem.png" alt="" width="34" height="42">
-        <span><strong>Rajasthan High Court</strong><small>e-Directory</small></span>
-      </a>
-      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
-        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
-        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
+  <header class="hero">
+    <div class="wrap">
+      <div class="top-in">
+        <a class="brand" href="./" aria-label="e-Directory home">
+          <img src="img/emblem.png" alt="" width="30" height="38">
+          <span><strong>Rajasthan High Court</strong><small>e-Directory</small></span>
+        </a>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+      <div class="hero-in">
+        <div>
+          <h1>Judicial Officers Directory</h1>
+          <p class="lede">Find any Hon'ble Judge or Judicial Officer by name, RJ code or home district.</p>
+        </div>
+        <dl class="stats" id="stats"></dl>
+      </div>
     </div>
   </header>
-
-  <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Judges &amp; Officers</p>
-      <h1>e-Directory of Judicial Officers</h1>
-      <p class="lede">Find any Hon'ble Judge, Judicial Officer or court official by name, RJ code or home district.</p>
-      <dl class="stats" id="stats"></dl>
-    </div>
-  </section>
 
   <div class="bar" id="bar">
     <div class="wrap">
@@ -46,7 +46,7 @@
         <label class="search">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           <span class="sr">Search the directory</span>
-          <input id="q" type="search" placeholder="Name, RJ code or district" autocomplete="off" spellcheck="false">
+          <input id="q" type="search" placeholder="Search name, RJ code or district" autocomplete="off" spellcheck="false">
           <kbd aria-hidden="true">/</kbd>
         </label>
         <label class="sortbox" title="Sort">
@@ -54,46 +54,34 @@
           <span class="sr">Sort by</span>
           <select id="fSort"></select>
         </label>
-        <button class="btn" id="filtersBtn" type="button" aria-expanded="false" aria-controls="filters">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-          <span>Filters</span><b class="count" id="filterCount" hidden></b>
-        </button>
         <div class="seg" role="group" aria-label="View">
-          <button type="button" data-view="grid" aria-label="Grid view" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></button>
+          <button type="button" data-view="grid" aria-label="Card view" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></button>
           <button type="button" data-view="list" aria-label="List view" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         </div>
-      </div>
-
-      <div class="tabs" id="tabs" role="tablist" aria-label="Directory sections"></div>
-
-      <div class="filters" id="filters" hidden>
-        <label>Batch
-          <select id="fBatch"><option value="">All batches</option></select>
-        </label>
-        <label>Designation
-          <select id="fRole"><option value="">All designations</option></select>
-        </label>
-        <label>Home district
-          <select id="fDist"><option value="">All districts</option></select>
-        </label>
-        <label>Age
-          <select id="fAge"><option value="">Any age</option></select>
-        </label>
-        <label>Title
-          <select id="fTitle"><option value="">Any title</option></select>
-        </label>
-        <label>Qualification
-          <select id="fQual"><option value="">Any qualification</option></select>
-        </label>
-        <button class="link" id="reset" type="button">Reset all</button>
       </div>
     </div>
   </div>
 
+  <nav class="subbar" id="subbar" aria-label="Browse and filter">
+    <div class="wrap">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Directory sections"></div>
+
+      <div class="filters" id="filters" role="group" aria-label="Filters">
+        <label class="fsel" data-k="role"><span>Designation</span><select id="fRole"><option value="">Any</option></select></label>
+        <label class="fsel" data-k="batch"><span>Batch</span><select id="fBatch"><option value="">Any</option></select></label>
+        <label class="fsel" data-k="dist"><span>Home district</span><select id="fDist"><option value="">Any</option></select></label>
+        <label class="fsel" data-k="age"><span>Age</span><select id="fAge"><option value="">Any</option></select></label>
+        <label class="fsel" data-k="svc"><span>Service</span><select id="fSvc"><option value="">Any</option></select></label>
+        <label class="fsel" data-k="qual"><span>Qualification</span><select id="fQual"><option value="">Any</option></select></label>
+        <label class="fsel" data-k="title"><span>Title</span><select id="fTitle"><option value="">Any</option></select></label>
+      </div>
+    </div>
+  </nav>
+
   <main class="wrap" id="results" tabindex="-1">
     <div class="meta">
       <p id="count" aria-live="polite"></p>
-      <div class="chips" id="chips"></div>
+      <button class="link" id="reset" type="button" hidden>Clear all filters</button>
     </div>
     <p class="notice" id="notice" role="status" hidden></p>
     <div class="grid" id="grid"></div>
@@ -108,12 +96,12 @@
 
   <footer class="foot">
     <div class="wrap">
-      <p>Compiled from the e-Directory published at <a href="https://hcraj.nic.in/hcraj/directory/index_mobile.php" rel="noopener">hcraj.nic.in</a> on <span id="scraped"></span>. For official use, please verify details against the source.</p>
+      <p>Compiled from the e-Directory published at <a href="https://hcraj.nic.in/hcraj/directory/index_mobile.php" rel="noopener">hcraj.nic.in</a> on <span id="scraped"></span>. Age and service are calculated as of today. For official use, please verify details against the source.</p>
     </div>
   </footer>
 
   <dialog id="drawer" aria-label="Profile">
-    <div class="d-head">
+    <div class="d-bar">
       <span class="d-pos" id="dPos"></span>
       <div class="d-nav">
         <button class="icon-btn" id="dPrev" type="button" aria-label="Previous person"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
